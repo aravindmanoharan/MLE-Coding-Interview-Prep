@@ -1,6 +1,3 @@
-# Solution for Question 3: California Housing Price Prediction
-# See interview-questions/03_california_housing_regression.md for the full problem statement.
-
 import pandas as pd
 from sklearn.datasets import fetch_california_housing
 from sklearn.model_selection import train_test_split
@@ -85,7 +82,7 @@ def build_pipeline():
     simple baseline regression model.
     """
     return Pipeline([
-        # ('scaler', StandardScaler()),
+        ('scaler', StandardScaler()),
         ('regressor', LinearRegression()),
     ])
 
@@ -109,7 +106,7 @@ def evaluate_model(model, X_test, y_test) -> None:
 def train_alternative_model(X_train, y_train):
     """Train one nonlinear regression model and compare performance to the baseline."""
     alt_model = Pipeline([
-        # ('scaler', StandardScaler()),
+        ('scaler', StandardScaler()),
         ('regressor', RandomForestRegressor(random_state=42)),
     ])
     alt_model.fit(X_train, y_train)
